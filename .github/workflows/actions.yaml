@@ -10,6 +10,14 @@ jobs:
         run: |
           pwd
           ls
+          echo "GITHUB_SHA (COMMIT ID) := $GITHUB_SHA"
+          echo "GITHUB_REPOSITORY (COMMIT ID) := $GITHUB_REPOSITORY"
+          echo "GITHUB_WORKSPACE (COMMIT ID) := $GITHUB_WORKSPACE"
+          echo "github.token := ${{ github.token }}"
+
+          echo "You can use this values with e.g.:"
+          echo "git clone git@github:\$GITHUB_REPOSITORY"
+          echo "git checkout \$GITHUB_SHA"
       - name: Checkout
         uses: actions/checkout@v1
       - name: List Files v2

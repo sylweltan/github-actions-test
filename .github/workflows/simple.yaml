@@ -12,5 +12,9 @@ jobs:
         run: |
           node -v
           npm -v
-      - name: failing command
-        run: eccho "Some message never displayed"
+      - name: Python Command
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
+

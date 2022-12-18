@@ -19,10 +19,10 @@ jobs:
         shell: python
   run-windows-command:
     runs-on: windows-2022
+    needs: ["run-shell-command"]
     steps:
     - name:  PWD PowerShell default
       run: Get-Location
     - name: PWD win BASH
       run: pwd
       shell: bash
-

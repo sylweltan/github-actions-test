@@ -1,6 +1,12 @@
 name: Shell Commands
 
-on: [push]
+on:
+  push:
+    branches:
+      - "main"
+      - "develop"
+    tags:
+      - v1.*
 
 jobs:
   run-shell-command:

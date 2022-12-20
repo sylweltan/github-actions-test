@@ -3,6 +3,7 @@ name: Actions Workflow
 #on: [push, pull_request]
 on:
   repository_dispatch:
+  # types: [build]
 #  schedule:
 #    - cron: '0/10 * * * *'
   # push:
@@ -13,6 +14,8 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-22.04
     steps:
+      - name: Show Dispatch Parameter
+        run: echo "${{ github.event.client_payload.env }}"
       - name: List Files
         run: |
           pwd

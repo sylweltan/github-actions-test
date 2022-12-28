@@ -38,7 +38,8 @@ jobs:
           ls -a
           git add -A
           git commit -m "Random file"
-          git push
+          #git push
+          git push -u origin master
       - name: Create issue using REST API
         run: |
           curl --request POST \

@@ -8,13 +8,28 @@ on: [ push ]
 # repository-projects: write
 # actions: write
 # contents: write
- 
+
 
 jobs:
   create-issue:
-    runs-on: ubuntu-latest
     permissions:
-      issues: write 
+      actions: write
+      checks: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: write
+      discussions: write
+      packages: write
+      pages: write
+      pull-requests: write
+      repository-projects: write
+      security-events: write
+      statuses: write
+
+    runs-on: ubuntu-latest
+    #permissions:
+    #  issues: write 
     steps:
       - name: Push random file
         run: |
@@ -38,8 +53,8 @@ jobs:
           ls -a
           git add -A
           git commit -m "Random file"
-          #git push
-          git push -u origin master
+          git push
+          #git push -u origin master
       - name: Create issue using REST API
         run: |
           curl --request POST \

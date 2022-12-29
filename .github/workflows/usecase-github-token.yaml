@@ -20,8 +20,8 @@ jobs:
           ls $HOME
           echo "=== cat \$HOME/secret.json ==="
           cat $HOME/secret.json
-          echo "=== jq \$HOME/secret.json ==="
-          jq $HOME/secret.json
+          echo "=== cat \$HOME/secret.json | jq ==="
+          cat $HOME/secret.json | jq
   create-issue:
     permissions:
       actions: write

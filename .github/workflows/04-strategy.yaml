@@ -1,0 +1,35 @@
+name: Shell Commands
+
+on:
+  workflow_dispatch:
+  #push:
+    branches:
+      - "main"
+      - "develop"
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 180
+    steps:
+      - name: echo a string
+        run: echo "Hello GitHub Actions!"
+        continue-on-error: true
+      - name: multiline scripts
+        run: |
+          node -v
+          npm -v
+      - name: Python Command
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
+  run-windows-command:
+    runs-on: windows-2022
+    needs: ["run-shell-command"]
+    steps:
+    - name:  PWD PowerShell default
+      run: Get-Location
+    - name: PWD win BASH
+      run: pwd
+      shell: bash

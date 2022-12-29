@@ -1,0 +1,17 @@
+name: Matrix
+on: push
+
+jobs:
+  node-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log node version
+        run: node -v
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Log node version v2
+        run: node -v
+      #- run: npm install
+      #- run: npm test

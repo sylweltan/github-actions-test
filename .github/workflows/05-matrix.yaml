@@ -10,6 +10,8 @@ jobs:
         exclude:
           - os: ubuntu-latest
             node_version: 6
+          - os: macos-latest
+            node_version: 8
       #fail-fast: true
       max-parallel: 3
     # runs-on: ubuntu-latest

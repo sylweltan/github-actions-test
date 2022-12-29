@@ -2,15 +2,26 @@ name: github-token-usecase
 
 on: [ push ]
 
-#permissions:
-# pull-requests: write
-# issues: write
-# repository-projects: write
-# actions: write
-# contents: write
-
-
 jobs:
+  decrypt:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: Decrypt file
+        run: |
+          gpg --quiet --batch --yes --decrypt --passphrase="$PASSPHRASE" --output $HOME/secret.json secret.json.gpg
+          echo "=== ls \$HOME ==="
+          ls $HOME
+        env:
+          PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Print our file content
+        run: |
+          echo "=== ls \$HOME ==="
+          ls $HOME
+          echo "=== cat \$HOME/secret.json ==="
+          cat $HOME/secret.json
+          echo "=== jq \$HOME/secret.json ==="
+          jq $HOME/secret.json
   create-issue:
     permissions:
       actions: write
@@ -28,8 +39,6 @@ jobs:
       statuses: write
 
     runs-on: ubuntu-latest
-    #permissions:
-    #  issues: write 
     steps:
       - name: Push random file
         run: |

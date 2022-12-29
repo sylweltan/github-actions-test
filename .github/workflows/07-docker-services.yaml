@@ -19,6 +19,11 @@ jobs:
         with:
           entrypoint: '/usr/local/bin/node'
           args: '-v'
+      - name: Send Slack message
+        uses: docker://technosophos/slack-notify
+        env:
+          SLACK_WEBHOOK: "${{ secrets.SLACK_WEBHOOK }}"
+          SLACK_MESSAGE: "Hello Slack from Github Actions!"
       - uses: actions/checkout@v1
       - name: Run script from container
         uses: docker://node:12.14.1-alpine3.10

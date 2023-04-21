@@ -1,0 +1,23 @@
+name: Setup Python Test
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup a Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+          # token ${{ secrets.PUBLIC_GITHUB_PAT }}
+      - name: Setup a Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'

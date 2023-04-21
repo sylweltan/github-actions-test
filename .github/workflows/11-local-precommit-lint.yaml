@@ -23,8 +23,8 @@ jobs:
         # with:
         #   ruby-version: '2.6'
         
-      # - name: Setup a Python 3.8 - v4.5.0
-      #   uses: actions/setup-python@v4.5.0
-      #   with:
-      #     python-version: 3.8
-      #     # token ${{ secrets.PUBLIC_GITHUB_PAT }}
+      - name: Setup a Python 3.8 - v4.5.0
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: 3.8
+          # token ${{ secrets.PUBLIC_GITHUB_PAT }}
